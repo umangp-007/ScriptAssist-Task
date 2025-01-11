@@ -22,7 +22,7 @@ interface Launch {
     wikipedia?: string;
   };
 }
-
+74278 06598
 const ResourceDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, isError, error } = useQuery<Launch>(
