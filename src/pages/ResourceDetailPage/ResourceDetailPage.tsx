@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { Card, Title, Text, Loader, Container, Group, Badge, Transition, Paper, Image, Button, Anchor } from '@mantine/core';
+import { Card, Title, Text, Loader, Container, Group, Badge, Transition, Paper, Image, Button, Anchor, Center } from '@mantine/core';
 import { getLaunchById } from '../../api/spacex'; // Import the API function to fetch launch details
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 
@@ -22,7 +22,7 @@ interface Launch {
     wikipedia?: string;
   };
 }
-74278 06598
+  
 const ResourceDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, isError, error } = useQuery<Launch>(
@@ -43,9 +43,11 @@ const ResourceDetailPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <Container mt="xl" style={{ textAlign: 'center' }}>
-        <Loader size="xl" />
-      </Container>
+       <Container size="md" style={{ height: '100vh' }}>
+             <Center style={{ height: '100%' }}>
+               <Loader size="lg" variant="dots" color="blue" />
+             </Center>
+           </Container>
     );
   }
 
