@@ -6,6 +6,8 @@ import ResourceListPage from './pages/ResourceListPage/ResourceListPage';
 import ResourceDetailPage from './pages/ResourceDetailPage/ResourceDetailPage';
 import Header from './components/Header/Header';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import ShipsPage from './pages/Ships/Ships';
+import AboutPage from './pages/About/About';
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -36,6 +38,8 @@ const App: React.FC = () => {
             </PrivateRoute>
           }
         />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/ships" element={<ShipsPage />} />
 		<Route
           path="*"
           element={

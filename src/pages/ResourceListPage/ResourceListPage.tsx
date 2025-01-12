@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   Table,
   Container,
-  Loader,
   Text,
   Paper,
   TextInput,
@@ -12,21 +11,14 @@ import {
   MultiSelect,
   Badge,
   Stack,
-  Center,
 } from '@mantine/core';
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { getLaunches } from '../../api/spacex';
 import ErrorPage from '../../components/ErrorPage/ErrorPage'; 
+import Loading from '../../components/Loading/Loading';
+import { Launch } from '../../types/ResourceListPageTypes';
 
-// Define the type for the launch data
-interface Launch {
-  id: string;
-  name: string;
-  date_utc: string;
-  rocket: string;
-  success: boolean;
-}
 
 const ResourceListPage: React.FC = () => {
   const [search, setSearch] = useState('');
@@ -59,26 +51,19 @@ const ResourceListPage: React.FC = () => {
     navigate(`/resources/${launchId}`);
   };
 
-  // Handle no internet connection error
   if (isError && error instanceof Error && error.message === 'Network Error') {
     return <ErrorPage type="network" />;
   }
 
   if (isLoading) {
     return (
-      <Container size="md" style={{ height: '100vh' }}>
-        <Center style={{ height: '100%' }}>
-          <Loader size="lg" variant="dots" color="blue" />
-        </Center>
-      </Container>
+    <Loading />
     );
   }
 
   if (isError) {
     return (
-      <Container mt="xl" style={{ textAlign: 'center' }}>
-        <Text color="red">Error fetching data: {String(error)}</Text>
-      </Container>
+     <ErrorPage type={'network'} />
     );
   }
 
@@ -89,7 +74,6 @@ const ResourceListPage: React.FC = () => {
           SpaceX Launches
         </Text>
 
-        {/* Responsive Filters */}
         <Stack spacing="md" mb="md">
           <TextInput
             label="Search by Mission Name"
@@ -125,7 +109,6 @@ const ResourceListPage: React.FC = () => {
           />
         </Stack>
 
-        {/* Responsive Table */}
         <div style={{ overflowX: 'auto' }}>
           <Table striped highlightOnHover verticalSpacing="md" fontSize="md" style={{ minWidth: '600px' }}>
             <thead>
@@ -153,7 +136,6 @@ const ResourceListPage: React.FC = () => {
           </Table>
         </div>
 
-        {/* Pagination */}
         {pageCount > 1 && (
           <Group position="center" mt="xl">
             <Pagination value={page} onChange={setPage} total={pageCount} />

@@ -1,16 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { AuthContextType } from '../../types/AuthTypes';
 
-// Define the AuthContext interface
-interface AuthContextType {
-  isAuthenticated: boolean;
-  login: () => void;
-  logout: () => void;
-}
-
-// Create the AuthContext
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Hook to use AuthContext
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -19,27 +11,22 @@ export const useAuth = () => {
   return context;
 };
 
-// AuthProvider component
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    // Check localStorage for persisted login state
     const storedAuth = localStorage.getItem('isAuthenticated');
-    return storedAuth === 'true'; // Convert to boolean
+    return storedAuth === 'true'; 
   });
 
-  // Login method
   const login = () => {
     setIsAuthenticated(true);
-    localStorage.setItem('isAuthenticated', 'true'); // Persist login state
+    localStorage.setItem('isAuthenticated', 'true'); 
   };
 
-  // Logout method
   const logout = () => {
     setIsAuthenticated(false);
-    localStorage.removeItem('isAuthenticated'); // Clear login state
+    localStorage.removeItem('isAuthenticated'); 
   };
 
-  // Provide the context value
   const value = { isAuthenticated, login, logout };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

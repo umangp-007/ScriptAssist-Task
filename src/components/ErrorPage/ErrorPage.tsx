@@ -1,10 +1,6 @@
 import React from 'react';
 import { Container, Alert, Button } from '@mantine/core';
-
-interface ErrorPageProps {
-  type: 'network' | 'no-data';
-  message?: string;
-}
+import { ErrorPageProps } from '../../types/ErrorPageTypes';
 
 const ErrorPage: React.FC<ErrorPageProps> = ({ type, message }) => {
   const renderMessage = () => {

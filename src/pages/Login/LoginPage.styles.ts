@@ -1,5 +1,3 @@
-// LoginPage.styles.ts
-
 import { createStyles } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
@@ -9,8 +7,8 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
     minHeight: '90vh',
     backgroundColor: theme.colors.gray[0],
-    padding: theme.spacing.md, // Padding for smaller screens
-    overflow: 'hidden', // Prevent scroll
+    padding: theme.spacing.md, 
+    overflow: 'hidden', 
   },
   paper: {
     display: 'flex',
@@ -20,7 +18,7 @@ const useStyles = createStyles((theme) => ({
     padding: theme.spacing.xl,
     boxShadow: theme.shadows.sm,
     width: '100%',
-    maxWidth: '400px', // Responsive width limit
+    maxWidth: '400px', 
   },
   title: {
     marginBottom: theme.spacing.md,
@@ -44,7 +42,7 @@ const useStyles = createStyles((theme) => ({
   },
   button: {
     backgroundColor: theme.colors.blue[6],
-    width: '100%', // Full-width button
+    width: '100%', 
     '&:hover': {
       backgroundColor: theme.colors.blue[7],
     },

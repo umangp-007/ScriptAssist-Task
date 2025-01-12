@@ -23,7 +23,6 @@ const LoginPage: React.FC = () => {
   const [showError, setShowError] = useState(false);
   const { classes } = useStyles();
 
-  // Helper function to validate inputs
   const validateInputs = (): boolean => {
     if (!username.trim() || !password.trim()) {
       setError('Username and password are required.');
@@ -72,7 +71,7 @@ const LoginPage: React.FC = () => {
           mounted={showError}
           transition="fade"
           duration={200}
-          onExited={() => setShowError(false)} // Reset error visibility after fade-out
+          onExited={() => setShowError(false)} 
         >
           {(styles) => (
             <Text color="red" size="sm" align="center" mt="md" style={styles}>

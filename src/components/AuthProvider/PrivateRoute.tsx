@@ -1,11 +1,8 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/app.store';
+import { PrivateRouteProps } from '../../types/PrivateRouteTypes';
 
-
-interface PrivateRouteProps {
-  children: JSX.Element;
-}
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
   const { isAuthenticated } = useAuthStore();
