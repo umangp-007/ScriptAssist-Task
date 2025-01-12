@@ -6,7 +6,6 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '90vh',
-    backgroundColor: theme.colors.gray[0],
     padding: theme.spacing.md, 
     overflow: 'hidden', 
   },
