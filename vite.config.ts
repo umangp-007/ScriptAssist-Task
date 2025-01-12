@@ -6,7 +6,7 @@ export default defineConfig({
 		port: 5175
 	},
 	plugins: [react()],
-	base:'/ScriptAssist-Task/',
+	base:'/ScriptAssist-Task',
 	build: {
 		outDir: 'build'
 	}
