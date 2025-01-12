@@ -8,6 +8,6 @@ export default defineConfig({
 	plugins: [react()],
 	base:'/ScriptAssist-Task',
 	build: {
-		outDir: 'build'
+		outDir: 'dist'
 	}
 });
