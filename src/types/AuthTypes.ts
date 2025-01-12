@@ -1,4 +1,3 @@
-// Define the AuthContext interface
 export interface AuthContextType {
   isAuthenticated: boolean;
   login: () => void;

@@ -4,6 +4,9 @@ const useStyles = createStyles((theme) => ({
   header: {
     backgroundColor: theme.colors.gray[1],
     borderBottom: `1px solid ${theme.colors.gray[3]}`,
+    position: 'sticky',
+    zIndex:999,
+    top:0
   },
   brand: {
     fontFamily: 'Poppins, sans-serif',
@@ -20,6 +23,9 @@ const useStyles = createStyles((theme) => ({
     '&:hover': {
       color: theme.colors.blue[6],
     },
+  },
+  activeNavLink:{
+    color: theme.colors.blue[6],
   },
   mobileMenu: {
     backgroundColor: theme.white,

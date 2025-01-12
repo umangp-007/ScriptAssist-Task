@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Card, Title, Text, Loader, Container, Group, Badge, Transition, Paper, Image, Button, Anchor, Center } from '@mantine/core';
-import { getLaunchById } from '../../api/spacex'; // Import the API function to fetch launch details
+import { getLaunchById } from '../../api/spacex'; 
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import Loading from '../../components/Loading/Loading';
 import { Launch } from '../../types/ResourceDetailPageTypes';

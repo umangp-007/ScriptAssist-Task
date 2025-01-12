@@ -3,9 +3,9 @@ export interface Ship {
     name: string;
     type: string;
     home_port: string;
-    image?: string; // Optional since the API might not provide this
-    year_built?: number; // Optional
+    image?: string; 
+    year_built?: number;
     active: boolean;
-    link?: string; // Optional
+    link?: string;
   }
   

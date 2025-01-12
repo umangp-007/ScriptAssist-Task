@@ -9,6 +9,7 @@ import {
   Burger,
   Button,
 } from '@mantine/core';
+import { useLocation, Link } from 'react-router-dom';
 import { useAuth } from '../AuthProvider/AuthProvider';
 import useStyles from './Header.style';
 
@@ -16,10 +17,13 @@ const Header: React.FC = () => {
   const { logout } = useAuth();
   const [menuOpened, setMenuOpened] = useState(false);
   const { classes } = useStyles();
+  const location = useLocation(); 
 
   const handleLogout = () => {
     logout();
   };
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <header className={classes.header}>
@@ -29,13 +33,28 @@ const Header: React.FC = () => {
 
           <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
             <Group spacing="md">
-              <Text component="a" href="/resources" className={classes.navLink}>
+              <Text
+                component={Link}
+                to="/resources"
+                className={`${classes.navLink} ${isActive('/resources') && classes.activeNavLink}`}
+                style={isActive('/resources') ? { pointerEvents: 'none' } : {}}
+              >
                 Home
               </Text>
-              <Text component="a" href="/ships" className={classes.navLink}>
+              <Text
+                component={Link}
+                to="/ships"
+                className={`${classes.navLink} ${isActive('/ships') && classes.activeNavLink}`}
+                style={isActive('/ships') ? { pointerEvents: 'none' } : {}}
+              >
                 Ships
               </Text>
-              <Text component="a" href="/about" className={classes.navLink}>
+              <Text
+                component={Link}
+                to="/about"
+                className={`${classes.navLink} ${isActive('/about') && classes.activeNavLink}`}
+                style={isActive('/about') ? { pointerEvents: 'none' } : {}}
+              >
                 About
               </Text>
               <Menu shadow="md" width={200}>
@@ -72,13 +91,34 @@ const Header: React.FC = () => {
         {menuOpened && (
           <div className={classes.mobileMenu}>
             <Group spacing="xs">
-              <Text component="a" href="/resources" className={classes.mobileNavItem}>
+              <Text
+                component={Link}
+                to="/resources"
+                className={`${classes.mobileNavItem} ${
+                  isActive('/resources') && classes.activeNavLink
+                }`}
+                style={isActive('/resources') ? { pointerEvents: 'none' } : {}}
+              >
                 Home
               </Text>
-              <Text component="a" href="/ships" className={classes.mobileNavItem}>
+              <Text
+                component={Link}
+                to="/ships"
+                className={`${classes.mobileNavItem} ${
+                  isActive('/ships') && classes.activeNavLink
+                }`}
+                style={isActive('/ships') ? { pointerEvents: 'none' } : {}}
+              >
                 Ships
               </Text>
-              <Text component="a" href="/about" className={classes.mobileNavItem}>
+              <Text
+                component={Link}
+                to="/about"
+                className={`${classes.mobileNavItem} ${
+                  isActive('/about') && classes.activeNavLink
+                }`}
+                style={isActive('/about') ? { pointerEvents: 'none' } : {}}
+              >
                 About
               </Text>
               <Button color="red" size="xs" onClick={handleLogout}>
@@ -93,3 +133,4 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+

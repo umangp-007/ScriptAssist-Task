@@ -13,17 +13,27 @@ import Header from "./components/Header/Header";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import ShipsPage from "./pages/Ships/Ships";
 import AboutPage from "./pages/About/About";
+import Footer from "./components/Footer/Footer";
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const { isAuthenticated } = useAuth();
 
-  return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
+  return isAuthenticated ? (
+    <>
+      <Header />
+      {children}
+      <Footer />
+    </>
+  ) : (
+    <Navigate to="/login" replace />
+  );
 };
 
 const App: React.FC = () => {
   return (
+    <>
     <Router>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
@@ -31,7 +41,6 @@ const App: React.FC = () => {
           path="/resources"
           element={
             <PrivateRoute>
-              <Header />
               <ResourceListPage />
             </PrivateRoute>
           }
@@ -40,7 +49,6 @@ const App: React.FC = () => {
           path="/resources/:id"
           element={
             <PrivateRoute>
-              <Header />
               <ResourceDetailPage />
             </PrivateRoute>
           }
@@ -49,8 +57,7 @@ const App: React.FC = () => {
           path="/about"
           element={
             <PrivateRoute>
-              <Header />
-              <AboutPage />{" "}
+              <AboutPage />
             </PrivateRoute>
           }
         />
@@ -58,7 +65,6 @@ const App: React.FC = () => {
           path="/ships"
           element={
             <PrivateRoute>
-              <Header />
               <ShipsPage />
             </PrivateRoute>
           }
@@ -67,13 +73,13 @@ const App: React.FC = () => {
           path="*"
           element={
             <PrivateRoute>
-              <Header />
               <NotFoundPage />
             </PrivateRoute>
           }
         />
       </Routes>
     </Router>
+    </>
   );
 };
 
