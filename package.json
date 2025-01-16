@@ -1,14 +1,11 @@
 {
 	"name": "@scriptassist/interview",
-	"homepage": "https://umangp-007.github.io/ScriptAssist-Task/",
 	"private": true,
 	"version": "0.0.0",
 	"scripts": {
 		"build": "vite build",
 		"dev": "vite",
-		"preview": "vite preview",
-		"predeploy":"npm run build",
-		"deploy":"gh-pages -d dist"
+		"preview": "vite preview"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.11.1",
